@@ -1,4 +1,6 @@
 /**
+ * Programmer: Andy Vo
+ * 
  * Project skeleton for SWEN20003: Object Oriented Software Development 2017
  * by Eleanor McMurtry
  */
@@ -23,6 +25,8 @@ public class App extends BasicGame
     public static final int SCREEN_HEIGHT = 600;
     /** size of the tiles, in pixels */
     public static final int TILE_SIZE = 32;
+    /** maximum number of tiles in level */
+    public static final int MAX_TILES = 1000;
     
     private World world;
 
@@ -69,7 +73,9 @@ public class App extends BasicGame
     {
         AppGameContainer app = new AppGameContainer(new App());
         // setShowFPS(true), to show frames-per-second.
-        app.setShowFPS(false);
+        app.setShowFPS(true);
+        // keeps the frame rate at monitor refresh rate.
+        app.setVSync(true);
         app.setDisplayMode(SCREEN_WIDTH, SCREEN_HEIGHT, false);
         app.start();
     }
