@@ -3,12 +3,12 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/Jar Files/jinput.jar"/>
-	<classpathentry kind="lib" path="lib/Jar Files/lwjgl.jar">
+	<classpathentry kind="lib" path="/home/andy/Dropbox/swen20003/Slick Libraries/Jar Files/slick.jar"/>
+	<classpathentry kind="lib" path="/home/andy/Dropbox/swen20003/Slick Libraries/Jar Files/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/andy/Dropbox/swen20003/eclipse-workspace/assignment-1/lib/Linux"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/andy/Dropbox/swen20003/Slick Libraries/Linux"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/Jar Files/slick.jar"/>
+	<classpathentry kind="lib" path="/home/andy/Dropbox/swen20003/Slick Libraries/Jar Files/jinput.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

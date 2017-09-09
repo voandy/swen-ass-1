@@ -12,17 +12,15 @@ public class World {
 	int levelWidth;
 	int levelHeight;
 	int numTiles;
+	int[] dimensions;
 	
 	float xOffset;
 	float yOffset;
 	
 	// a map of items that the player cannot pass through
 	boolean[][] collisionMap;
-	
 	// stores raw level data
 	private Sprite[] level;
-	// strors map spites only
-	private Sprite[] map;
 	// stores player
 	private Player player;
 	
@@ -34,22 +32,23 @@ public class World {
 		// loads raw level data
 		level = Loader.loadSprites(LEVEL_SRC);
 		
-		// extracts map properties from level data
-		levelWidth = (int) level[0].x;
-		levelHeight = (int) level[0].y;
-		numTiles = getNumTiles(level);
+		dimensions = Loader.loadDimensions(LEVEL_SRC);
+		levelWidth = dimensions[0];
+		levelHeight = dimensions[1];
+		// minus one since the last sprite is player
+		numTiles = level.length - 1;
 		
 		// calculates offset values required for rendering
 		xOffset = (App.SCREEN_WIDTH - (levelWidth * App.TILE_SIZE)) / 2;
 		yOffset = (App.SCREEN_HEIGHT - (levelHeight * App.TILE_SIZE)) / 2;
 		
-		// extracts map data from level data
-		map = levelToMap(level, App.TILE_SIZE, levelWidth, levelHeight);
-		
 		// creates and populates collision map
-		collisionMap = populateCollisionMap(map);
+		collisionMap = populateCollisionMap(level);
 		
 		// creates player and initialises position
+		// assumes player is the last sprite in the level file, might need adjusting in future
+		initialPlayerX = level[numTiles].x;
+		initialPlayerY = level[numTiles].y;
 		player = new Player(initialPlayerX, initialPlayerY);
 	}
 
@@ -63,38 +62,9 @@ public class World {
 	throws SlickException 
 	{
 		for (int i = 0; i < this.numTiles; i++) {
-			map[i].render(g, xOffset, yOffset);
+			level[i].render(g, xOffset, yOffset);
 		}
 		player.render(g, xOffset, yOffset);
-	}
-	
-	// creates a map array from raw level data and extracts initial player position
-	private Sprite[] levelToMap(Sprite[] level, int tileSize, int levelWidth, int levelHeight) {
-		map = new Sprite[this.numTiles];
-		
-		int i;
-		for (i = 0; i < this.numTiles; i++) {
-			map[i] = level[i + 1];
-		}
-		
-		// assumes player position is the last line of level file
-		initialPlayerX = level[i + 2].x;
-		initialPlayerY = level[i + 2].y;
-		
-		return map;
-	}
-	
-	// returns the number of tiles in loaded level
-	private int getNumTiles(Sprite[] level) {
-		int i = 0;
-		while(level[i] != null && i < App.MAX_TILES) {
-			i++;
-			if (i == App.MAX_TILES) {
-				throw new RuntimeException("Tile limit reached.");
-			}
-		}
-		// minus 3 since the first sprite is dimensions and the last is player
-		return i - 3;
 	}
 	
 	// populates collision map array. true for wall tiles.
