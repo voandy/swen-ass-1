@@ -6,7 +6,10 @@ import org.newdawn.slick.SlickException;
 public class Loader {	
 	private static final int NO_DIMENSIONS = 2;
 	
-	// loads the map dimensions from the level file
+	/** loads the map dimensions from the level file
+	 * @param filename
+	 * @return an array of size 2, the first element is the width in tiles and the seconds is the height in tiles
+	 */
 	public static int[] loadDimensions(String filename) {
 		int[] dimensions = new int[NO_DIMENSIONS];
 		String[] line = new String[NO_DIMENSIONS];
@@ -27,7 +30,7 @@ public class Loader {
 	/**
 	 * Loads the sprites from a given file.
 	 * @param filename
-	 * @return level[]
+	 * @return an array of all the sprites loaded from the level file
 	 */
 	public static Sprite[] loadSprites(String filename)
 	throws SlickException
@@ -62,7 +65,7 @@ public class Loader {
 		return level;
 	}
 	
-	// parses a line from levels CSV into a Sprite 
+	// parses a line from levels CSV into a Sprite
 	private static Sprite textToSprite(String line) 
 	throws SlickException
 	{

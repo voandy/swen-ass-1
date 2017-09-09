@@ -9,13 +9,17 @@ public class Sprite {
 	protected static final String STONE_SRC = "res/stone.png";
 	protected static final String TARGET_SRC = "res/target.png";
 	protected static final String PLAYER_SRC = "res/player_left.png";
+	protected static final String SPRITE_SRC = "res/sprite.png";
 	
-	Image tile;
-	String type;
-	boolean collider;
 	
-	int x;
-	int y;
+	protected Image tile;
+	protected String type;
+	
+	// collision status, true for tiles which the player cannot pass through
+	protected boolean collider;
+	
+	protected int x;
+	protected int y;
 	
 	public Sprite(String image_src, int x, int y) 
 	throws SlickException 
@@ -55,6 +59,7 @@ public class Sprite {
 	}
 	
 	public void render(Graphics g, float xOffset, float yOffset) {
+		// applies offset to render sprites in the center of the screen
 		tile.draw(x * App.TILE_SIZE + xOffset, y * App.TILE_SIZE + yOffset);
 	}
 	

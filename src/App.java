@@ -20,13 +20,13 @@ import org.newdawn.slick.Input;
  */
 public class App extends BasicGame
 {
- 	/** screen width, in pixels */
+ 	// screen width, in pixels
     public static final int SCREEN_WIDTH = 800;
-    /** screen height, in pixels */
+    // screen height, in pixels
     public static final int SCREEN_HEIGHT = 600;
-    /** size of the tiles, in pixels */
+    // size of the tiles, in pixels
     public static final int TILE_SIZE = 32;
-    /** maximum number of tiles in level */
+    // maximum number of tiles in level
     public static final int MAX_TILES = 1000;
     
     private World world;
